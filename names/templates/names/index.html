@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Name Selector</title>
+</head>
+<body>
+    <h1>Add a Name</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" required>
+        <button type="submit">Add Name</button>
+    </form>
+    <h2>Names List</h2>
+    <ul>
+        {% for name in names %}
+            <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'random_name' %}">Select Random Name</a>
+</body>
+</html>

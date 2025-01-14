@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Name Selector</title>
+</head>
+<body>
+    <h1>Randomly Selected Name</h1>
+    {% if selected_name %}
+        <p>The selected name is: {{ selected_name }}</p>
+    {% else %}
+        <p>No names available to select.</p>
+    {% endif %}
+    <a href="{% url 'index' %}">Back to Add Names</a>
+</body>
+</html>
