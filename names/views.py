@@ -11,16 +11,13 @@ def index(request):
             names.append(name)
         return redirect('index')
     context = {'names': names}
-    response = render(request, 'names/index.html', context)
-    names = []  # Clear the names list after rendering
-    request.session.flush()  # Clear the session after rendering
-    return response
+    return render(request, 'names/index.html', context)
 
 def random_name(request):
-    names = request.session.get('names', [])
+    global names
     if names:
         selected_name = random.choice(names)
     else:
         selected_name = None
-    request.session.flush()  # Clear the session after rendering
+    names = []  # Clear the names list after rendering
     return render(request, 'names/random_name.html', {'selected_name': selected_name})
